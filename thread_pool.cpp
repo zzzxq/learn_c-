@@ -90,7 +90,7 @@ public:
     ~ThreadPool()
     {
         this->stop();
-        while (tasks.empty()) {
+        while (!tasks.empty()) {
             delete tasks.front();
             tasks.pop();
         }
