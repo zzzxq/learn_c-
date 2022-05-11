@@ -25,6 +25,24 @@ ostream &operator<<(ostream &out, const ListNode *head) {
     return out;
 }
 
+
+void merge(ListNode* &p1, ListNode* &p2) {
+    ListNode ret, *head = &ret;
+    while(p1 || p2) {
+        if (p2 == nullptr || (p1 && p1->val < p2->val)) {
+            head->next = p1;
+            p1 = p1->next;
+        } else {
+            head->next = p2;
+            p2 = p2->next;
+        }
+        head = head->next;
+    }
+    p1 = ret.next;
+    p2 = nullptr;
+    return ;
+}
+/*
 void merge(ListNode* &L1, ListNode* &L2) 
 {
     if (L2 == nullptr) return ;
@@ -49,6 +67,7 @@ void merge(ListNode* &L1, ListNode* &L2)
     L1 = ret.next;
     return;
 }
+*/
 
 ListNode* Listsort(ListNode* head) 
 {
